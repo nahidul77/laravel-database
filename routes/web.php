@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,7 @@ Route::get('/', function () {
 
     // $users = $pdo->query('select * from users')->fetchAll();
 
-    $result = DB::select('select * from users where id =? and name = ?', [1, 'vilma o\'Keefe']);
+    // $result = DB::select('select * from users where id =? and name = ?', [1, 'vilma o\'Keefe']);
 
     // $result = DB::select('select * from users where id = :id', ['id' => 1]);
 
@@ -40,21 +41,25 @@ Route::get('/', function () {
     // User::all();
 
 
-    DB::transaction(function () {
+    // DB::transaction(function () {
 
-        try {
-            DB::table('users')->delete();
+    //     try {
+    //         DB::table('users')->delete();
 
-            $result = DB::table('users')->where('id', 4)->update(['email' => 'none']);
+    //         $result = DB::table('users')->where('id', 4)->update(['email' => 'none']);
 
-            if (!$result) {
-                throw new \Exception;
-            }
-        } catch (\Exception $e) {
+    //         if (!$result) {
+    //             throw new \Exception;
+    //         }
+    //     } catch (\Exception $e) {
 
-            DB::rollBack();
-        }
-    }, 5); //optional argument how many times, transaction should be reattemted.
+    //         DB::rollBack();
+    //     }
+    // }, 5); //optional argument how many times, transaction should be reattemted.
+
+
+    dump(Comment::factory(3)->make());
+    dump(Comment::factory(3)->create());
 
 
 
