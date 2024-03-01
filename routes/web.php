@@ -141,9 +141,20 @@ Route::get('/', function () {
     //     })
     //     ->get();
 
-    // dump($results);
+
+    // $results = DB::table('users')
+    //     ->whereJsonContains('meta->skills', 'laravel')
+    //     ->whereJsonContains('meta->settings->site_language', 'en')
+    //     ->get();
 
 
+    // $results = DB::table('comments')->paginate(3);
+
+    $results = DB::table('comments')->simplePaginate(3);
+
+    // return $results;
+
+    dump($results);
 
     return view('welcome');
 });
