@@ -58,8 +58,90 @@ Route::get('/', function () {
     // }, 5); //optional argument how many times, transaction should be reattemted.
 
 
-    dump(Comment::factory(3)->make());
-    dump(Comment::factory(3)->create());
+    // dump(Comment::factory(3)->make());
+    // dump(Comment::factory(3)->create());
+
+    // $users = DB::table('users')->get();
+    // $users = DB::table('users')->pluck('email');
+    // $user = DB::table('users')->find(1);
+    // $user = DB::table('users')->where('id', 1)->value('email');
+
+    // $comments = DB::table('comments')->select('content as comment_content')->get();
+
+    // $comments = DB::table('comments')->select('user_id')->distinct()->get();
+
+    // $result = DB::table('comments')->count();
+    // $result = DB::table('comments')->sum('user_id');
+    // $result = DB::table('comments')->max('user_id');
+    // $result = DB::table('comments')->avg('user_id');
+
+    // $result = DB::table('comments')->where('content', 'content')->exists();
+
+    // $result = DB::table('comments')->where('content', 'content')->doesntExist();
+
+
+    // $results = DB::table('rooms')->where('price', '<', 200)->get(); // >, =, like etc
+
+    // $results = DB::table('rooms')->where([
+    //     ['room_size', 2],
+    //     ['price', '<', 200],
+    // ])->get();
+
+    // $results = DB::table('rooms')
+    //     ->where('room_size', 2)
+    //     ->orWhere('price', '<', 400)
+    //     ->get();
+
+    // $results = DB::table('rooms')
+    //     ->where('price', '<', 400)
+    //     ->orWhere(function ($query) {
+    //         $query->where('room_size', '>', 2)
+    //             ->where('room_size', '<', 5);
+    //     })
+    //     ->get();
+
+
+    // $results = DB::table('rooms')
+    //     ->whereBetween('room_size', [1, 3]) //whereNotBetween
+    //     ->get();
+
+    // $results = DB::table('rooms')
+    //     ->whereNotIn('room_size', [1, 2, 3]) //whereIn
+    //     ->get();
+
+    // whereNull('column')
+
+    // whereNotNull('column')
+
+    // whereDate('created_at', '2024-03-13')
+
+    // whereTime('created_at', '01:30:10')
+
+    // whereMonth('created_at', '5')
+
+    // whereDay('created_at', '15')
+
+    // whereYear('created_at', '2020')
+
+    // whereColumn('column1', '>', 'column2') // column1 values greater than column2
+
+    // whereColumn([
+    //     ['first_name' = 'last_name'],
+    //     ['updated_at' , '>', 'created_at']
+    // ])
+
+
+    // $results = DB::table('users')
+    //     ->whereExists(function ($query) {
+    //         $query->select('id')
+    //             ->from('reservations')
+    //             ->whereRaw('reservations.user_id = users.id')
+    //             ->where('check_in', '2024-02-23')
+    //             ->limit(1);
+    //     })
+    //     ->get();
+
+    // dump($results);
 
 
 
