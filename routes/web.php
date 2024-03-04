@@ -150,9 +150,44 @@ Route::get('/', function () {
 
     // $results = DB::table('comments')->paginate(3);
 
-    $results = DB::table('comments')->simplePaginate(3);
+    // $results = DB::table('comments')->simplePaginate(3);
 
     // return $results;
+
+
+    //Full text Search===========================================
+
+    // $results = DB::table('comments')->where('content', 'like', '%Dolor%')->get();
+
+    // $results = DB::statement('ALTER TABLE comments ADD FULLTEXT fulltext_index(content)');
+
+    // $results = DB::table('comments')
+    //     ->whereRaw("MATCH(content) AGAINST(? BOOLEAN MODE)", ['Dolor'])
+    //     ->get();
+
+
+    //RAW SQL==============================
+
+    // $results = DB::table('comments')
+    //     // ->select(DB::raw('count(user_id) as number_of_comments, users.name'))
+    //     ->selectRaw('count(user_id) as number_of_comments, users.name')
+    //     ->join('users', 'users.id', '=', 'comments.user_id')
+    //     ->groupBy('users.id', 'users.name')
+    //     ->get();
+
+    // whereRaw / orWhereRaw
+    // havingRaw / orHavingRaw
+    // orderByRaw
+    // groupByRaw
+
+    // $results = DB::table('comments')
+    //     ->orderByRaw('updated_at - created_at DESC')
+    //     ->get();
+
+    $results = DB::table('users')
+        ->selectRaw('LENGTH(name) as name_length, name')
+        ->orderByRaw('name_length DESC')
+        ->get();
 
     dump($results);
 
